@@ -1,13 +1,18 @@
 import tkinter as tk
 from tkinter import messagebox
 
-# Classe que representa a coleção de livros
+# Aqui é onde é representado o inicio do codigo e tambem a coleção
+# Self é usada para acessar uma variavel
+# Def é usado para definir uma função
+# Del é deletar
+# Algumas varivaveis e palavras estão sendo representadas por abrevições
+# Acervo é referente a coleção ou estoque de livros
 class ColLivros:
     def __init__(self):
         self.acervo = {}
 
     def add_livro(self, tit, aut, ano, disp=True):
-        # Adiciona um novo livro ao acervo
+        # Adicionar um livro a coleção da biblioteca
         if tit in self.acervo:
             return False
         else:
@@ -19,7 +24,7 @@ class ColLivros:
             return True
 
     def atualiz_livro(self, tit, novo_aut=None, novo_ano=None, novo_disp=None):
-        # Atualiza as informações de um livro existente
+        # Atualizar dados dos livros existentes na coleção da biblioteca
         if tit in self.acervo:
             if novo_aut:
                 self.acervo[tit]['autor'] = novo_aut
@@ -32,7 +37,7 @@ class ColLivros:
             return False
 
     def rem_livro(self, tit):
-        # Remove um livro do acervo
+        # Remoção do livro da coleção da biblioteca
         if tit in self.acervo:
             del self.acervo[tit]
             return True
@@ -40,7 +45,7 @@ class ColLivros:
             return False
 
     def ver_disp(self, tit):
-        # Verifica se um livro está disponível
+        # Verifica se um livro está disponível na coleção da biblioteca
         if tit in self.acervo:
             return self.acervo[tit]['disponivel']
         else:
@@ -53,7 +58,7 @@ class InterfaceBib:
         self.janela = janela
         self.janela.title("Biblioteca de Livros")
 
-        # Frame principal
+        # Frame principal (Campo branco no fundo)
         self.frm_princ = tk.Frame(janela)
         self.frm_princ.pack(padx=10, pady=10)
 
@@ -97,7 +102,8 @@ class InterfaceBib:
         # Botão para consultar a disponibilidade de um livro
         self.btn_ver = tk.Button(self.frm_princ, text="Consultar Disponibilidade", command=self.ver_disp)
         self.btn_ver.grid(row=7, column=0, columnspan=2)
-
+        
+        # Adicionar o livro na coleção
     def add_livro(self):
         tit = self.ent_tit.get()
         aut = self.ent_aut.get()
@@ -109,6 +115,7 @@ class InterfaceBib:
         else:
             messagebox.showerror("Erro", f"O livro '{tit}' já existe na biblioteca.")
 
+        #Atualizar o livro na coleção 
     def atualiz_livro(self):
         tit = self.ent_tit.get()
         aut = self.ent_aut.get()
@@ -120,6 +127,7 @@ class InterfaceBib:
         else:
             messagebox.showerror("Erro", f"O livro '{tit}' não existe na biblioteca.")
 
+        #Remover o livro da coleção 
     def rem_livro(self):
         tit = self.ent_tit.get()
 
@@ -128,6 +136,7 @@ class InterfaceBib:
         else:
             messagebox.showerror("Erro", f"O livro '{tit}' não existe na biblioteca.")
 
+        # Verificar no disponibildade do livro
     def ver_disp(self):
         tit = self.ent_tit.get()
 
