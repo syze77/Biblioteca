@@ -1,11 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
 
-# Aqui é onde é representado o inicio do codigo e tambem a coleção
-# Self é usada para acessar uma variavel
-# Def é usado para definir uma função
-# Del é deletar
-# Algumas varivaveis e palavras estão sendo representadas por abrevições
 # Acervo é referente a coleção ou estoque de livros
 class ColLivros:
     def __init__(self):
